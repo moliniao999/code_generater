@@ -1,0 +1,149 @@
+<#include "/include/base.include"/>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${basepackage}.dao.impl.${className}DaoImpl">
+    <resultMap id="${className}RM" type="${basepackage}.domain.${className}">
+        <#list table.columns as column>
+        <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase>
+            <id property="id" column="${column.sqlName}"/>
+        <#else>
+            <result property="${column.columnNameFirstLower}" column="${column.sqlName}"/>
+        </#if>
+        </#list>
+    </resultMap>
+
+
+	<select id="getById" parameterType="Long" resultMap="${className}RM">
+		<![CDATA[
+		SELECT
+		<#list table.columns as column>
+		    <#if column_index != 0>,</#if>${column.sqlName}
+		</#list>
+		FROM ${table.sqlName}
+
+		WHERE ${table.pkColumn.sqlName}=<#noparse>#{pk}
+		</#noparse>
+		and (yn is null or yn = 1)
+		]]>
+	</select>
+
+	<insert id="save" parameterType="${basepackage}.domain.${className}">
+        <selectKey keyProperty="id" resultType="long" order="AFTER">
+            SELECT LAST_INSERT_ID();
+        </selectKey>
+		<![CDATA[
+		INSERT INTO ${table.sqlName}(
+		<#assign cindex = 0>
+		<#list table.columns as column>
+		    <#if column.columnNameLowerCase != table.pkColumn.columnNameLowerCase>
+		    <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase
+                || column.columnNameLowerCase == "created"
+                || column.columnNameLowerCase == "modified"
+                || column.columnNameLowerCase == "yn"
+                ><#else>
+                    <#if cindex != 0>,</#if>${column.sqlName}
+                    <#assign cindex = cindex + 1>
+                </#if>
+		    </#if>
+		</#list>
+		) VALUES(
+		<#assign cindex = 0>
+		<#list table.columns as column>
+		    <#if column.columnNameLowerCase != table.pkColumn.columnNameLowerCase>
+		        <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase
+                    || column.columnNameLowerCase == "created"
+                    || column.columnNameLowerCase == "modified"
+                    || column.columnNameLowerCase == "yn"
+                    ><#else>
+                    <#if cindex != 0>,</#if><#noparse>#{</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
+                    <#assign cindex = cindex + 1>
+                </#if>
+		    </#if>
+		</#list>
+		)
+		]]>
+	</insert>
+
+    <update id="update" parameterType="${basepackage}.domain.${className}">
+    <![CDATA[
+            UPDATE ${table.sqlName} set
+            <#assign cindex = 0>
+            <#list table.columns as column>
+                <#if column.columnNameLowerCase != table.pkColumn.columnNameLowerCase>
+                    <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase
+                    || column.columnNameLowerCase == "created"
+                    || column.columnNameLowerCase == "modified"
+                    || column.columnNameLowerCase == "yn"
+                    ><#else>
+                        <#if cindex != 0>,</#if>${column.sqlName}=<#noparse>#{</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
+                        <#assign cindex = cindex + 1>
+                    </#if>
+                </#if>
+            </#list>
+
+            where 1=1
+            and ${table.pkColumn.sqlName} =<#noparse> #{id}</#noparse>
+            ]]>
+    </update>
+
+	<select id="countByCondition" parameterType="Query" resultType="Integer">
+		<![CDATA[
+		SELECT count(1) FROM ${table.sqlName} where 1=1
+		]]>
+        <if test="param != null">
+            <#list table.columns as column>
+            <#if column.columnNameLowerCase == "yn">
+            <![CDATA[
+                    and (yn is null or yn = 1)
+                    ]]>
+            <#else>
+            <if test="param.${column.columnNameFirstLower} != null and param.${column.columnNameFirstLower} != ''">
+            and ${column.sqlName} = <#noparse>#{param.</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
+            </if>
+            </#if>
+            </#list>
+        </if>
+	</select>
+
+	<select id="listByCondition" parameterType="Query" resultMap="${className}RM">
+		<![CDATA[
+		SELECT
+		<#list table.columns as column>
+		    <#if column_index != 0>,</#if>${column.sqlName}
+		</#list>
+		FROM ${table.sqlName} where 1=1
+		]]>
+        <if test="param != null">
+        <#list table.columns as column>
+            <#if column.columnNameLowerCase == "yn">
+                <![CDATA[
+                and (yn is null or yn = 1)
+                ]]>
+            <#else>
+                <if test="param.${column.columnNameFirstLower} != null and param.${column.columnNameFirstLower} != ''">
+                    and ${column.sqlName} = <#noparse>#{param.</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
+                </if>
+            </#if>
+        </#list>
+        </if>
+        order by ${table.pkColumn.sqlName} desc
+        <#noparse>
+		<![CDATA[
+		limit #{startRow},#{pageSize}
+		]]>
+        </#noparse>
+	</select>
+
+
+    <update id="deleteById" parameterType="Long">
+    <![CDATA[
+        update ${table.sqlName} set
+        <#noparse>
+        yn = 2
+        where 1 = 1
+        </#noparse>
+        and ${table.pkColumn.sqlName} =<#noparse> #{id}</#noparse>
+    ]]>
+    </update>
+
+</mapper>
