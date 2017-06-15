@@ -1,8 +1,8 @@
 /**
  * <B>Description</B> ${table.remarks} <br />
- * <B>Copyright</B> Copyright (c) 2014 www.diligrp.com All rights reserved. <br />
- * 本软件源代码版权归地利集团,未经许可不得任意复制与传播.<br />
- * <B>Company</B> 地利集团
+ * <B>Copyright</B> Copyright (c) <br />
+ * 本软件源代码版权归xxxx,未经许可不得任意复制与传播.<br />
+ * <B>Company</B>
  * @createTime ${.now?datetime}
- * @author template
+ * @author weili
  */
