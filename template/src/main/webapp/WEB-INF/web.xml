@@ -20,58 +20,9 @@
     </welcome-file-list>
 
 
-    <context-param>
-        <param-name>webAppRootKey</param-name>
-        <param-value>web.root</param-value>
-    </context-param>
 
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring/beanContext.xml</param-value>
-    </context-param>
 
-    <listener>
-        <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
-    </listener>
 
-    <listener>
-        <listener-class>
-            org.springframework.web.context.ContextLoaderListener
-        </listener-class>
-    </listener>
-
-    <!--过滤XSS,SQL漏洞-->
-    <filter>
-        <filter-name>XSSFilter</filter-name>
-        <filter-class>${basepackage}.support.mvc.xss.XSSFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>XSSFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <filter>
-        <filter-name>entityManagerInViewFilter</filter-name>
-        <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
-        <init-param>
-            <param-name>entityManagerFactoryBeanName</param-name>
-            <param-value>entityManagerFactory</param-value>
-        </init-param>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>entityManagerInViewFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <filter>
-        <filter-name>webContent</filter-name>
-        <filter-class>${basepackage}.support.mvc.WebContentFilter</filter-class>
-        <init-param>
-            <param-name>exclude</param-name>
-            <param-value>^/favicon\.ico$,.+\.(css|js|png|gif|pdf|doc|txt|jpg|swf|mp3)</param-value>
-        </init-param>
-    </filter>
 
     <filter-mapping>
         <filter-name>webContent</filter-name>
@@ -109,7 +60,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring/controllerContext.xml</param-value>
+            <param-value>classpath:spring.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

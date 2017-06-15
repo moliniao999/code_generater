@@ -1,5 +1,5 @@
 <#include "/include/base.include"/>
-package ${basepackage}.service.${classNameLower};
+package ${basepackage}.service;
 
 import ${basepackage}.exception.DiliException;
 import ${basepackage}.domain.${className};

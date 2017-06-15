@@ -1,5 +1,5 @@
 <#include "/include/base.include"/>
-package ${basepackage}.manager.${classNameLower};
+package ${basepackage}.manager;
 
 import ${basepackage}.domain.${className};
 import com.diligrp.website.util.dao.BaseQuery;

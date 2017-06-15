@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 					http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	 					http://www.springframework.org/schema/aop
+       					http://www.springframework.org/schema/aop/spring-aop.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd"
+       default-autowire="byName">
+    
+
+    <!--<context:component-scan base-package="com.weili" />-->
+
+    <!--<context:annotation-config   />   配置，他的作用是式地向 Spring 容器注册
+AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor、
+PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcessor 这 4 个BeanPostProcessor。
+注册这4个 BeanPostProcessor 为了你的系统能够识别相应的注解-->
+
+<!--  <context:component-scan/>该配置包含了自动注入上述processor的功能，因此可以将 <context:annotation-config/> 移除 -->
+
+    <!--<mvc:annotation-driven /> 会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean,是spring MVC为@Controllers分发请求所必须的-->
+
+
+    <!--静态资源配置   不进行拦截，使用默认servlet-handler拦截-->
+    <!--如果没有<mvc:annotation-driven/>，那么所有的Controller可能就没有解析 ，
+    所有当有请求时候都没有匹配的处理请求类，就都去<mvc:default-servlet-handler/>即default servlet处理了。
+    添加上<mvc:annotation-driven/>后，相应的do请求被Controller处理，而静态资源因为没有相应的Controller就会被default servlet处理。总之没有相应的Controller就会被default servlet处理-->
+    <mvc:resources mapping="/images/**" location="/WEB-INF/resources/images/"/>
+    <mvc:default-servlet-handler /><!--默认handler-->
+    <mvc:annotation-driven/><!-- 使用默认注解解析器，@Controller注解生效前提 -->
+    <!-- 配置@ResponseBody注释后返回的数据格式，使用fastjson -->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+
+            <bean id="stringHttpMessageConverter"
+                  class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8" index="0"></constructor-arg><!--
+            避免出现乱码 -->
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+
+            <bean id="fastJsonHttpMessageConverter"
+                  class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value><!-- 避免IE出现下载JSON文件的情况 -->
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <!-- 配置＠ResponseBody注释后返回的数据格式，使用jackson -->
+    <!--
+     <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean id="jacksonMessageConverter"
+                class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <value>text/json;charset=UTF-8</value>
+                        </list>
+                    </property>
+                </bean>
+            </mvc:message-converters>
+     </mvc:annotation-driven>
+    -->
+
+
+
+
+    <!--beetl   -->
+    <bean id="beetlConfig"   class="org.beetl.ext.spring.BeetlGroupUtilConfiguration" init-method="init">
+        <property name="configFileResource"  value="classpath:beetl.properties" />
+
+        <property name="functions">
+            <map>
+                <entry key="concat" value-ref="concatFunction"/>
+            </map>
+        </property>
+
+
+        <property name="tagFactorys">
+            <map>
+                <entry key="simpleTag" value-ref="testTagFactory"/>
+            </map>
+        </property>
+    </bean>
+
+
+    <bean name="testTagFactory" class="org.beetl.ext.spring.SpringBeanTagFactory">
+        <property name="name"  value="simpleTag"    />
+    </bean>
+
+    <bean id="simpleTag" class="com.weili.servlet.tag.beetl.SimpleBeetlHtmlTag"/>
+    <bean id="concatFunction" class="com.weili.servlet.tag.beetl.func.ConcatFunction"/>
+
+
+    <bean id="beetlViewResolver" class="org.beetl.ext.spring.BeetlSpringViewResolver">
+
+        <property name="cache" value="true" />
+        <!--<property name="prefix" value="/WEB-INF/page/beetl" />-->
+        <property name="suffix" value=".htm" />
+        <property name="contentType" value="text/html;charset=UTF-8" />
+        <property name="config"   ref="beetlConfig"/>
+        <property name="order" value="0" />
+    </bean>
+
+
+
+
+
+
+    <!--velocity   -->
+    <bean id="velocityConfig"
+          class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+
+        <property name="resourceLoaderPath"  value="/" />
+        <property name="velocityProperties"  >
+            <props>
+                <prop key="input.encoding" >UTF-8</prop>
+                <prop key="output.encoding" >UTF-8</prop>
+            </props>
+        </property>
+
+    </bean>
+    <bean id="velocityViewResolver"
+          class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+        <property name="cache" value="true" />
+        <property name="prefix" value="/WEB-INF/page/" />
+        <property name="suffix" value=".vm" />
+        <property name="contentType" value="text/html;charset=UTF-8" />
+        <property name="layoutUrl" value="/WEB-INF/layouts/layout.vm" />
+        <property name="order"  value="1" />
+    </bean>
+
+    <!-- jsp   -->
+
+    <bean  id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/page/" />
+        <property name="suffix" value=".jsp" />
+        <property name="contentType" value="text/html;charset=UTF-8" />
+        <property name="order"  value="2" />
+    </bean>
+    <!-- 文件上传使用 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="209715200" /><!-- 200M -->
+    </bean>
+
+
+<!-- 配置参数 -->
+    <bean id="webUtils" class="com.weili.util.WebUtils">
+        <property name="assetsPath" value="${project.server.static.contextPath}/static/common/ace1.3/assets/" />
+        <property name="commonAssetsPath" value="${project.server.static.contextPath}/static/" />
+        <property name="localAssetsPath" value="${project.server.contextPath}" />
+        <property name="contextPath" value="${project.server.contextPath}" />
+    </bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

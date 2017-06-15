@@ -1,5 +1,5 @@
 <#include "/include/base.include"/>
-package ${basepackage}.manager.${classNameLower}.impl;
+package ${basepackage}.manager.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ import org.springframework.cache.annotation.Cacheable;
 
 import ${basepackage}.dao.${className}Dao;
 import ${basepackage}.domain.${className};
-import ${basepackage}.manager.${classNameLower}.${className}Manager;
+import ${basepackage}.manager.${className}Manager;
 import com.diligrp.website.util.dao.BaseQuery;
 import com.diligrp.website.util.web.PageTemplate;
 

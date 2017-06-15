@@ -1,5 +1,5 @@
 <#include "/include/base.include"/>
-package ${basepackage}.domain.exception;
+package ${basepackage}.exception;
 
 import java.io.Serializable;
 import com.diligrp.website.util.domain.BaseDomain;

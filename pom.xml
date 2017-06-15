@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dili</groupId>
-    <artifactId>diliTemplate</artifactId>
+    <artifactId>code_generater</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>diliTemplate</name>
+    <name>code_generater</name>
     <url>http://maven.apache.org</url>
 
     <properties>

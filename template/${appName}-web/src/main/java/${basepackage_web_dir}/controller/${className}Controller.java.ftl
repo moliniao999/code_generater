@@ -1,12 +1,12 @@
 <#include "/include/base.include"/>
-package ${basepackage}.manweb.controller;
+package ${basepackage}.web.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ${basepackage}.domain.${className};
-import ${basepackage}.service.${classNameLower}.${className}Service;
-import ${basepackage}.manweb.utils.WebUtils;
+import ${basepackage}.service.${className}Service;
+import ${basepackage}.web.utils.WebUtils;
 import ${basepackage}.exception.DiliException;
 
 import com.diligrp.website.util.web.BeanUtils;

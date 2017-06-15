@@ -1,5 +1,5 @@
 <#include "/include/base.include"/>
-package ${basepackage}.service.${classNameLower}.impl;
+package ${basepackage}.service.impl;
 
 import ${basepackage}.exception.DiliException;
 import org.slf4j.Logger;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import ${basepackage}.dao.${className}Dao;
 import ${basepackage}.domain.${className};
-import ${basepackage}.service.${classNameLower}.${className}Service;
-import ${basepackage}.manager.${classNameLower}.${className}Manager;
+import ${basepackage}.service.${className}Service;
+import ${basepackage}.manager.${className}Manager;
 import com.diligrp.website.util.dao.BaseQuery;
 import com.diligrp.website.util.web.PageTemplate;
 import com.diligrp.website.util.domain.Result;

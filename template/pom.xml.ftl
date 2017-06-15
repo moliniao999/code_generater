@@ -39,8 +39,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <showWarnings>true</showWarnings>
 
                 </configuration>
@@ -63,6 +63,19 @@
                             </includes>
                         </resource>
                     </webResources>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>8081</port>
+                    <url>http://10.28.11.181:80/manager</url>
+                    <username>gateway</username>
+                    <password>123456</password>
+                    <path>/</path>
                 </configuration>
             </plugin>
         </plugins>

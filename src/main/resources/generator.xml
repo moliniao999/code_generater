@@ -80,13 +80,11 @@
 
 	
 	<!-- Mysql -->
-	<!--<entry key="jdbc_url">jdbc:mysql://jkwin7:3306/zhangzhong?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
-	<!--<entry key="jdbc_url">jdbc:mysql://192.168.1.14:3306/dili-crm?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
-	<!--<entry key="jdbc_url">jdbc:mysql://192.168.1.14:3306/dili-website?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
-	<entry key="jdbc_url">jdbc:mysql://10.28.6.55:3307/agriez_activity?useUnicode=true&amp;characterEncoding=utf8</entry>
+	<!--<entry key="jdbc_url">jdbc:mysql://10.28.6.55:3307/agriez_activity?useUnicode=true&amp;characterEncoding=utf8</entry>-->
+	<entry key="jdbc_url">jdbc:mysql://localhost:3306/springmvc?useUnicode=true&amp;characterEncoding=utf8</entry>
 	<entry key="jdbc_driver">org.mariadb.jdbc.Driver</entry>
 	<entry key="jdbc_username">root</entry>
-	<entry key="jdbc_password">123456</entry>
+	<entry key="jdbc_password">root</entry>
 	<!--<entry key="jdbc_driver">com.mysql.jdbc.Driver</entry> -->
 
 

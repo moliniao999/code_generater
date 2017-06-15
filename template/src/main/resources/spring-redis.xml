@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+       default-autowire="byName">
+
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <!-- <property name="maxActive" value="1000" /> -->
+        <property name="maxIdle" value="500" />
+        <!-- <property name="maxWait" value="1000" /> -->
+        <property name="testOnBorrow" value="true" />
+    </bean>
+
+    <bean id="jedis.shardInfo1" class="redis.clients.jedis.JedisShardInfo">
+        <constructor-arg index="0" value="localhost" />
+        <!--<constructor-arg index="1" value="${project.redis.port1}" />-->
+    </bean>
+
+
+    <!--<bean id="redisUtils" class="com.diligrp.website.util.redis.impl.RedisUtilImpl">-->
+        <!--<property name="shardedJedisPool" ref="shardedJedisPool" />-->
+        <!--<property name="keyRule" value="dili_yqyw_redis_" />-->
+    <!--</bean>-->
+
+
+
+    <!--<bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">-->
+        <!--<constructor-arg index="0" ref="jedisPoolConfig" />-->
+        <!--<constructor-arg index="1">-->
+            <!--<list>-->
+                <!--<ref bean="jedis.shardInfo1" />-->
+            <!--</list>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
+
+</beans>

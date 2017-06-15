@@ -1,57 +1,45 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:cache="http://www.springframework.org/schema/cache"
-       xmlns:p="http://www.springframework.org/schema/p"
+
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-   http://www.springframework.org/schema/beans/spring-beans.xsd 
-     http://www.springframework.org/schema/cache 
-     http://www.springframework.org/schema/cache/spring-cache.xsd">
-
-    <cache:annotation-driven/>
-
-    <!-- 启用缓存注解功能，这个是必须的，否则注解不会生效，另外，该注解一定要声明在spring主配置文件中才会生效 -->
-    <cache:annotation-driven cache-manager="cacheManager"/>
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- spring自己的换管理器，这里定义了两个缓存位置名称 ，既注解中的value -->
-    <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+    <!-- dummy cacheManager  -->
+    <bean id="cacheManager" class="org.springframework.cache.support.CompositeCacheManager">
+        <property name="cacheManagers">
+            <list>
+                <ref bean="simpleCacheManager" />
+            </list>
+        </property>
+        <property name="fallbackToNoOpCache" value="true" />
+    </bean>
+    <bean id="simpleCacheManager" class="org.springframework.cache.support.SimpleCacheManager">
         <property name="caches">
             <set>
                 <bean class="org.springframework.data.redis.cache.RedisCache">
                     <constructor-arg name="name" value="rc"/>
-                    <constructor-arg name="expiration" value="1800000"/>
-                    <!--<constructor-arg name="expiration" value="-1"/>-->
-                    <constructor-arg name="prefix" value=""/>
-                    <constructor-arg name="template" ref="cache.redisTemplate"/>
-                    <!--<property name="redisTemplate" ref="redisTemplate" />-->
-                    <!--<property name="name" value="default"/>-->
+                    <constructor-arg name="prefix" value="${project.cache.prefix}"/>
+                    <constructor-arg name="redisOperations" ref="cache.redisTemplate"/>
+                    <!--过期时间:秒-->
+                    <constructor-arg name="expiration" value="60"/>
                 </bean>
                 <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
-                    <property name="name" value="default"/>
+                    <!--不指定name则表示为默认缓存-->
+                    <!--<property name="name" value="default"/>-->
                 </bean>
             </set>
         </property>
     </bean>
-
-    <!-- redis 相关配置 -->
-
-    <bean id="cache.jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <!-- <property name="maxActive" value="1000" /> -->
-        <property name="maxIdle" value="500"/>
-        <!-- <property name="maxWait" value="1000" /> -->
-        <property name="testOnBorrow" value="true"/>
+    <bean id="cacheKeyGenerator" class="com.weili.base.CacheKeyGenerator">
+        <property name="keyPrefix" value="${project.cache.prefix}"/>
     </bean>
 
-    <#noparse>
-    <bean id="cache.jedis.shardInfo1" class="redis.clients.jedis.JedisShardInfo">
-        <constructor-arg index="0" value="${project.redis.host1}"/>
-        <constructor-arg index="1" value="${project.redis.port1}"/>
-    </bean>
-    </#noparse>
     <bean id="cache.connectionFactory"
           class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
         <property name="usePool" value="true"/>
-        <property name="poolConfig" ref="cache.jedisPoolConfig"/>
-        <property name="shardInfo" ref="cache.jedis.shardInfo1"/>
+        <property name="poolConfig" ref="jedisPoolConfig"/>
+        <property name="shardInfo" ref="jedis.shardInfo1"/>
     </bean>
 
     <bean id="cache.redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
