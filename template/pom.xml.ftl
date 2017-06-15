@@ -321,6 +321,13 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.6.1</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.yqyw.website</groupId>
+            <artifactId>diligrp-website-util</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     </#noparse>
 
