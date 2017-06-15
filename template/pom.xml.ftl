@@ -21,7 +21,7 @@
     </modules>
 
     <properties>
-        <spring.version>3.2.2.RELEASE</spring.version>
+        <spring.version>4.2.8.RELEASE</spring.version>
         <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

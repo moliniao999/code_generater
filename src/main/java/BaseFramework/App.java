@@ -23,13 +23,13 @@ public class App {
 //        System.out.println(new File("template").getAbsolutePath());
         g.getGenerator().addTemplateRootDir(new File("template"));
 
-//		g.printAllTableNames();				//打印数据库中的表名称
+ 		g.printAllTableNames();				//打印数据库中的表名称
 
         g.deleteOutRootDir();							//删除生成器的输出目录
 //        g.generateByTable("table_name");	//通过数据库表生成文件,template为模板的根目录
-          g.generateByAllTable();	//自动搜索数据库中的所有表并生成文件,template为模板的根目录
+//          g.generateByAllTable();	//自动搜索数据库中的所有表并生成文件,template为模板的根目录
 
-//        g.generateByTable("member");
+          g.generateByTable("t_activity");
 //        g.generateByTable("article");
 //        g.generateByTable("article_group");
 //        g.generateByTable("category");
