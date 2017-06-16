@@ -27,7 +27,6 @@
 
     <build>
 
-        <finalName>${appName}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
