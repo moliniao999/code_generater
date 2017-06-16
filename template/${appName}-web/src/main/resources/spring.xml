@@ -41,7 +41,6 @@
         <property name="locations">
             <list>
                 <value>classpath:db.properties</value>
-                <value>classpath:config.properties</value>
                 <value>classpath:manage.properties</value>
             </list>
         </property>

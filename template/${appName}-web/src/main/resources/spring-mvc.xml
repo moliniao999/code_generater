@@ -135,17 +135,21 @@ PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcesso
     <bean id="velocityViewResolver"
           class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
         <property name="cache" value="true" />
-        <property name="prefix" value="/WEB-INF/page/" />
+        <property name="prefix" value="/WEB-INF/views/" />
         <property name="suffix" value=".vm" />
         <property name="contentType" value="text/html;charset=UTF-8" />
-        <property name="layoutUrl" value="/WEB-INF/layouts/layout.vm" />
+        <!--<property name="layoutUrl" value="/WEB-INF/layouts/layout.vm" />-->
         <property name="order"  value="1" />
+    </bean>
+
+    <bean id="velocityDefaultLayout" class="java.lang.String">
+        <constructor-arg value="${project.view.VMDefault}" />
     </bean>
 
     <!-- jsp   -->
 
     <bean  id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/page/" />
+        <property name="prefix" value="/WEB-INF/views/" />
         <property name="suffix" value=".jsp" />
         <property name="contentType" value="text/html;charset=UTF-8" />
         <property name="order"  value="2" />
@@ -158,12 +162,25 @@ PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcesso
 
 
 <!-- 配置参数 -->
-    <bean id="webUtils" class="com.weili.util.WebUtils">
-        <property name="assetsPath" value="${project.server.static.contextPath}/static/common/ace1.3/assets/" />
-        <property name="commonAssetsPath" value="${project.server.static.contextPath}/static/" />
-        <property name="localAssetsPath" value="${project.server.contextPath}" />
-        <property name="contextPath" value="${project.server.contextPath}" />
+    <bean id="velocityTools" class="java.util.HashMap">
+        <constructor-arg>
+            <map>
+                <entry key="moneyUtils" value-ref="moneyUtils" />
+                <entry key="webUtils" value-ref="webUtils" />
+                <entry key="dateFormatUtils" value-ref="dateFormatUtils" />
+            </map>
+        </constructor-arg>
     </bean>
+    <bean id="webUtils" class="${basepackage}.web.utils.WebUtils">
+        <property name="assetsPath" value="{project.server.static.contextPath}/static/common/ace1.3/assets/" />
+        <property name="commonAssetsPath" value="{project.server.static.contextPath}/static/" />
+        <property name="localAssetsPath" value="{project.server.contextPath}" />
+        <property name="contextPath" value="{project.server.contextPath}" />
+    </bean>
+
+    <bean id="dateFormatUtils" class="com.diligrp.website.util.format.DateFormatUtils" />
+    <bean id="moneyUtils" class="com.diligrp.website.util.format.MoneyUtils" />
+
 </beans>
 
 

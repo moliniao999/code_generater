@@ -7,28 +7,25 @@
 	</comment>
 	
 	<!--<entry key="dal_package">com.juqkai.base.dal</entry>-->
-	<entry key="appName">order</entry>
+	<entry key="appName">user</entry>
     <!-- 增删改查的基本package -->
-    <entry key="basepackage">com.weili.order</entry>
+    <entry key="basepackage">com.weili.user</entry>
+	<entry key="basepackage_groupId">com.weili</entry>
 
-	<entry key="basepackage_client">com.weili.order.client</entry>
-	<entry key="basepackage_domain">com.weili.order.domain</entry>
-	<entry key="basepackage_web">com.weili.order.web</entry>
-	<entry key="basepackage_service">com.weili.order.service</entry>
-	<entry key="basepackage_dao">com.weili.order.dao</entry>
-	<entry key="basepackage_rpc">com.weili.order.rpc</entry>
-	<entry key="basepackage_manager">com.weili.order.manager</entry>
+
+	<entry key="basepackage_web">com.weili.user.web</entry>
+
 	<!-- jsp namespace: web/${namespace}/${className}/list.jsp -->
 	<entry key="namespace">pages</entry>
-	
+
 	<!-- 模块，用于dal层sqlmap及spring配置文件的划分 -->
 	<entry key="appModule">shared</entry>
-	
+
 	<!-- 需要移除的表名前缀,使用逗号进行分隔多个前缀,示例值: t_,v_ -->
 	<entry key="tableRemovePrefixes">t_</entry>
 
 
-	
+
 	<!-- 数据库类型至java类型映射  -->
 	<entry key="java_typemapping.java.sql.Timestamp">java.util.Date</entry>
 	<entry key="java_typemapping.java.sql.Date">java.util.Date</entry>
@@ -47,23 +44,23 @@
 
 	<!-- dalgen的table配置文件目录,不需要一个个列举出来,只要是这个目录下面的xml文件就可以全部扫描出来  -->
 	<entry key="dir_table_configs">tables</entry>
-    <entry key="outRoot">e:/output/project-order</entry>
-	
+    <entry key="outRoot">e:/output/project-user</entry>
+
 	<!-- dal层模板的输出目录 -->
 	<entry key="dir_dal_output_root">target/generator-output/</entry>
-	
+
 	<!-- 模板根目录,可以为: 1. c:/some.jar!/subfolder   2. classpath:some_folder. 模板文件存放在jar包中 -->
 	<!--<entry key="dir_templates_root">classpath:generator/template/rapid</entry>-->
 	<entry key="dir_templates_root">classpath:template</entry>
 
 
 
-	
+
 	<!-- 切换不同的数据库驱动，可以影响如分页语句的生成. 因为生成器会根据jdbc_driver自动生成一个databaseType=mysql,oracle,postgresql变量 -->
 	<!-- H2 -->
 	<!--<entry key="jdbc_url">jdbc:h2:H:/template/dili/db/database;AUTO_SERVER=TRUE</entry>-->
 	<!--<entry key="jdbc_driver">org.h2.Driver</entry>-->
-	
+
 
 	<!-- 增删改查生成器模板
 		struts2 + hibernate: ${dir_templates_root}/share/basic,${dir_templates_root}/table/dao_hibernate,${dir_templates_root}/table/dao_hibernate_annotation,${dir_templates_root}/table/service_complex,${dir_templates_root}/table/web_struts2
@@ -76,15 +73,17 @@
 	<!-- 数据库相关配置 -->
 	<!--<entry key="jdbc_username">sa</entry>-->
 	<!--<entry key="jdbc_password"></entry>-->
-	
 
-	
+
+
 	<!-- Mysql -->
-	<!--<entry key="jdbc_url">jdbc:mysql://10.28.6.55:3307/agriez_activity?useUnicode=true&amp;characterEncoding=utf8</entry>-->
-	<entry key="jdbc_url">jdbc:mysql://localhost:3306/springmvc?useUnicode=true&amp;characterEncoding=utf8</entry>
+	<!--<entry key="jdbc_url">jdbc:mysql://jkwin7:3306/zhangzhong?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
+	<!--<entry key="jdbc_url">jdbc:mysql://192.168.1.14:3306/dili-crm?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
+	<!--<entry key="jdbc_url">jdbc:mysql://192.168.1.14:3306/dili-website?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
+	<entry key="jdbc_url">jdbc:mysql://10.28.6.55:3307/agriez_activity?useUnicode=true&amp;characterEncoding=utf8</entry>
 	<entry key="jdbc_driver">org.mariadb.jdbc.Driver</entry>
 	<entry key="jdbc_username">root</entry>
-	<entry key="jdbc_password">root</entry>
+	<entry key="jdbc_password">123456</entry>
 	<!--<entry key="jdbc_driver">com.mysql.jdbc.Driver</entry> -->
 
 
@@ -134,5 +133,5 @@
 	<!-- Derby 
 	<entry key="jdbc_url">jdbc:derby://localhost/databaseName</entry>
 	<entry key="jdbc_driver">org.apache.derby.jdbc.ClientDriver</entry>	
-	-->	
+	-->
 </properties>

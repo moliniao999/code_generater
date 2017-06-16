@@ -1,5 +1,6 @@
-<#--<#assign className = table.className/>-->
-<#--<#assign classNameLower = className?uncap_first/>-->
+<#--
+&lt;#&ndash;<#assign className = table.className/>&ndash;&gt;
+&lt;#&ndash;<#assign classNameLower = className?uncap_first/>&ndash;&gt;
 <#include "/include/base.include"/>
 
 package ${basepackage}.dao.impl;
@@ -19,7 +20,7 @@ import ${basepackage}.domain.${className};
 
 @Component
 public class ${className}DaoImpl extends BaseDaoImpl<${className}> implements ${className}Dao{
-    <#--public ${className} findOne(Long pk) {
+    &lt;#&ndash;public ${className} findOne(Long pk) {
         return getSqlSessionTemplate().selectOne("${classNameLower}.getByPK", pk);
     }
 
@@ -41,6 +42,7 @@ public class ${className}DaoImpl extends BaseDaoImpl<${className}> implements ${
 
     public Boolean del(${className} obj){
         return getSqlSessionTemplate().update("${classNameLower}.del", obj) > 0;
-    }-->
+    }&ndash;&gt;
 
 }
+-->

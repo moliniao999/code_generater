@@ -1,3 +1,4 @@
+/*
 package com.yqyw.activity.sdk.service.impl;
 
 import com.alibaba.fastjson.TypeReference;
@@ -9,9 +10,11 @@ import com.yqyw.activity.sdk.service.ActivityService;
 
 import java.util.List;
 
+*/
 /**
  * Created by zhous_000 on 2016/5/6.
- */
+ *//*
+
 public class ActivityServiceImpl extends BaseServiceImpl implements ActivityService{
 
     public ActivityServiceImpl(String token) {
@@ -113,3 +116,4 @@ public class ActivityServiceImpl extends BaseServiceImpl implements ActivityServ
 
 
 }
+*/

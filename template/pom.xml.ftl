@@ -2,10 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>${basepackage}</groupId>
+	<groupId>${basepackage_groupId}</groupId>
 	<artifactId>${appName}</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>${appName}</name>
 	<packaging>pom</packaging>
 	<description></description>
 
@@ -25,7 +24,9 @@
         <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <build>
+
         <finalName>${appName}</finalName>
         <resources>
             <resource>
@@ -39,43 +40,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <showWarnings>true</showWarnings>
-
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <webResources>
-                        <resource>
-                        <#noparse>
-                            <directory>${basedir}/src/main/java</directory>
-                        </#noparse>
-                            <targetPath>WEB-INF/classes</targetPath>
-                            <includes>
-                                <include>**/*.properties</include>
-                                <include>**/*.xml</include>
-                                <include>**/*.css</include>
-                                <include>**/*.html</include>
-                            </includes>
-                        </resource>
-                    </webResources>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <port>8081</port>
-                    <url>http://10.28.11.181:80/manager</url>
-                    <username>gateway</username>
-                    <password>123456</password>
-                    <path>/</path>
                 </configuration>
             </plugin>
         </plugins>
@@ -219,6 +186,18 @@
             <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.6.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.7.2</version>
+        </dependency>
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
@@ -341,6 +320,13 @@
             <artifactId>diligrp-website-util</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <!-- druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.27</version>
+        </dependency>
     </dependencies>
     </#noparse>
 
@@ -348,53 +334,25 @@
     <profiles>
         <profile>
             <!-- 开发环境 -->
-            <id>develop</id>
+            <id>dev</id>
             <!-- 默认 -->
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <!--jdbc type -->
-                <orders.jdbc.datasource.type>dbcp</orders.jdbc.datasource.type>
-                <!-- 数据库 -->
-                <orders.jdbc.driver>com.mysql.jdbc.Driver</orders.jdbc.driver>
-                <orders.jdbc.url>jdbc:MySql://10.28.6.117:3306/orders?characterEncoding=UTF-8</orders.jdbc.url>
-                <orders.jdbc.username>root</orders.jdbc.username>
-                <orders.jdbc.password>123456</orders.jdbc.password>
-                <!-- 日志 -->
-                <orders.log.level>INFO</orders.log.level>
-                <orders.log.dtms.level>INFO</orders.log.dtms.level>
-                <orders.log.path>/diliapp/servers/logs/orders.nong12.com</orders.log.path>
-                <!--打包编码 -->
-                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <orders.contextPath>http://orders.nong12.com</orders.contextPath>
-                <!--redis-->
-                <project.redis.host1>10.28.6.152</project.redis.host1>
-                <project.redis.port1>6379</project.redis.port1>
-                <!--统一管理平台配置-->
-                <conf.manage.enable>true</conf.manage.enable>
-                <conf.manage.spider>false</conf.manage.spider>
-                <conf.manage.system>orders</conf.manage.system>
-                <conf.manage.domain>http://manage.nong12.com/</conf.manage.domain>
-                <!--系统url并未以.do结尾，因此需要使用如下方式的正则表达式-->
-                <conf.manage.includes>^/.*</conf.manage.includes>
-                <!--权限拦截器在处理导出文件时会出错，导致文件打不开，比如Excel，因此对于导出，跳过拦截-->
-                <conf.manage.excludes>^/noAccess.do$,^/welcome.do$,^/loginControl/.*,^/api/.*,^/cleanCache$,^/assets/.*,^/export/.*,^/orderSelf/export/.*,^/monitor,^/druid/*,^/orderPrint/export/*</conf.manage.excludes>
-                <!--订单系统短信通知开关-->
-                <orders.sms.enabled>true</orders.sms.enabled>
-                <!--订单获系统缓存开关-->
-                <orders.cache.enabled>false</orders.cache.enabled>
-                <!-- 存时间 以秒为单位 -->
-                <orders.cache.time>1800</orders.cache.time>
-                <orders.cache.redis.selectDB>1</orders.cache.redis.selectDB>
-                <orders.cache.main.key>pnr_orders</orders.cache.main.key>
-                <!-- 店铺接口签名  -->
-                <orders.rpc.shopClient.sign>FzZGZxd2VycXdlYXNzZHZzdnp4Y3Z</orders.rpc.shopClient.sign>
-                <!-- 消息中心配置 -->
-                <mq.namesrvAddr>10.28.6.124:9876;10.28.6.125:9876</mq.namesrvAddr>
-                <mq.producerGroup>orders</mq.producerGroup>
-                <!-- 订单请求和响应参数 -->
-                <orders.paramLog.enabled>false</orders.paramLog.enabled>
+                <!-- 数据库连接池配置文件 -->
+                <project.dbpool.driverClass>com.mysql.jdbc.Driver</project.dbpool.driverClass>
+                <project.dbpool.jdbcUrl>jdbc:mysql://10.28.6.55:3307/agriez_activity?useUnicode=true&amp;characterEncoding=utf8</project.dbpool.jdbcUrl>
+                <project.dbpool.username>root</project.dbpool.username>
+                <project.dbpool.password>123456</project.dbpool.password>
+                <project.dbpool.idleConnectionTestPeriodInMinutes>1</project.dbpool.idleConnectionTestPeriodInMinutes>
+                <project.dbpool.idleMaxAgeInMinutes>4</project.dbpool.idleMaxAgeInMinutes>
+                <project.dbpool.partitionCount>1</project.dbpool.partitionCount>
+                <project.dbpool.maxConnectionsPerPartition>3</project.dbpool.maxConnectionsPerPartition>
+                <project.dbpool.minConnectionsPerPartition>2</project.dbpool.minConnectionsPerPartition>
+                <project.dbpool.acquireIncrement>2</project.dbpool.acquireIncrement>
+                <project.dbpool.statementsCacheSize>50</project.dbpool.statementsCacheSize>
+                <project.dbpool.releaseHelperThreads>3</project.dbpool.releaseHelperThreads>
             </properties>
         </profile>
 
