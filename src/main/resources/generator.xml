@@ -134,4 +134,8 @@
 	<entry key="jdbc_url">jdbc:derby://localhost/databaseName</entry>
 	<entry key="jdbc_driver">org.apache.derby.jdbc.ClientDriver</entry>	
 	-->
+
+
+	<!--应用程序参数自定义 -->
+	<entry key="project_view_VMDefault">#{project.view.VMDefault}</entry>
 </properties>

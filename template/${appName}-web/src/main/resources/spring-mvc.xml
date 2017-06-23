@@ -143,7 +143,7 @@ PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcesso
     </bean>
 
     <bean id="velocityDefaultLayout" class="java.lang.String">
-        <constructor-arg value="${project.view.VMDefault}" />
+        <constructor-arg value="${project_view_VMDefault}" />
     </bean>
 
     <!-- jsp   -->

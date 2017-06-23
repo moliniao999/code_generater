@@ -12,7 +12,6 @@
     <modules>
         <module>${appName}-domain</module>
         <module>${appName}-service</module>
-        <module>${appName}-manager</module>
         <module>${appName}-dao</module>
         <module>${appName}-web</module>
         <module>${appName}-rpc</module>
@@ -201,6 +200,12 @@
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-tools</artifactId>
+            <version>2.0</version>
         </dependency>
 
         <!-- url rewrite -->

@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>${appName}-web</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>${appName}-web</name>
     <url>http://maven.apache.org</url>
 

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import ${basepackage}.dao.${className}Dao;
 import ${basepackage}.domain.${className};
 import ${basepackage}.service.${className}Service;
-import ${basepackage}.manager.${className}Manager;
+import ${basepackage}.dao.${className}Dao;
 import com.diligrp.website.util.dao.BaseQuery;
 import com.diligrp.website.util.web.PageTemplate;
 import com.diligrp.website.util.domain.Result;
@@ -27,7 +27,7 @@ public class ${className}ServiceImpl implements ${className}Service {
             .getLogger(${className}ServiceImpl.class);
 
     @Autowired
-    private ${className}Manager ${classNameLower}Manager;
+    private ${className}Dao ${classNameLower}Dao;
 
     public Map<?, ?> preSave(${className} obj) throws DiliException {
         Map map = new HashMap();
@@ -43,28 +43,30 @@ public class ${className}ServiceImpl implements ${className}Service {
     }
 
     public ${className} findOne(Long pk) throws DiliException{
-        return ${classNameLower}Manager.findOne(pk);
+        return ${classNameLower}Dao.getById(pk);
     }
 
     public Boolean save(${className} ${classNameLower}) throws DiliException {
-        return ${classNameLower}Manager.save(${classNameLower});
+        return ${classNameLower}Dao.save(${classNameLower});
     }
 
     public Boolean update(${className} ${classNameLower}) throws DiliException {
-        ${className} up = ${classNameLower}Manager.findOne(${classNameLower}.getId());
+        ${className} up = ${classNameLower}Dao.getById(${classNameLower}.getId());
         if (up == null) {
             return false;
         }
         up = BeanUtils.merge(up, ${classNameLower});
-        return ${classNameLower}Manager.update(up);
+        return ${classNameLower}Dao.update(up);
     }
 
     public PageTemplate find(BaseQuery bq) throws DiliException {
-        return ${classNameLower}Manager.find(bq);
+    List<${className}> list = activityDao.listByCondition(bq);
+    int totalSize = activityDao.countByCondition(bq);
+    return  PageTemplate.create(bq, totalSize, list);
     }
 
     public Boolean del(Long id) throws DiliException {
-        return ${classNameLower}Manager.del(id);
+        return ${classNameLower}Dao.deleteById(id);
     }
 
 }
