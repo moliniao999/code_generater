@@ -77,44 +77,6 @@ PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcesso
 
 
 
-    <!--beetl   -->
-    <bean id="beetlConfig"   class="org.beetl.ext.spring.BeetlGroupUtilConfiguration" init-method="init">
-        <property name="configFileResource"  value="classpath:beetl.properties" />
-
-        <property name="functions">
-            <map>
-                <entry key="concat" value-ref="concatFunction"/>
-            </map>
-        </property>
-
-
-        <property name="tagFactorys">
-            <map>
-                <entry key="simpleTag" value-ref="testTagFactory"/>
-            </map>
-        </property>
-    </bean>
-
-
-    <bean name="testTagFactory" class="org.beetl.ext.spring.SpringBeanTagFactory">
-        <property name="name"  value="simpleTag"    />
-    </bean>
-
-    <bean id="simpleTag" class="com.weili.servlet.tag.beetl.SimpleBeetlHtmlTag"/>
-    <bean id="concatFunction" class="com.weili.servlet.tag.beetl.func.ConcatFunction"/>
-
-
-    <bean id="beetlViewResolver" class="org.beetl.ext.spring.BeetlSpringViewResolver">
-
-        <property name="cache" value="true" />
-        <!--<property name="prefix" value="/WEB-INF/page/beetl" />-->
-        <property name="suffix" value=".htm" />
-        <property name="contentType" value="text/html;charset=UTF-8" />
-        <property name="config"   ref="beetlConfig"/>
-        <property name="order" value="0" />
-    </bean>
-
-
 
 
 
@@ -143,7 +105,7 @@ PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcesso
     </bean>
 
     <bean id="velocityDefaultLayout" class="java.lang.String">
-        <constructor-arg value="${project_view_VMDefault}" />
+        <constructor-arg value="${r'${project_view_VMDefault}'}" />
     </bean>
 
     <!-- jsp   -->
@@ -172,10 +134,10 @@ PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcesso
         </constructor-arg>
     </bean>
     <bean id="webUtils" class="${basepackage}.web.utils.WebUtils">
-        <property name="assetsPath" value="{project.server.static.contextPath}/static/common/ace1.3/assets/" />
-        <property name="commonAssetsPath" value="{project.server.static.contextPath}/static/" />
-        <property name="localAssetsPath" value="{project.server.contextPath}" />
-        <property name="contextPath" value="{project.server.contextPath}" />
+        <property name="assetsPath" value="${r'${project.server.static.contextPath}/static/common/ace1.3/assets/}'}" />
+        <property name="commonAssetsPath" value="${r'${project.server.static.contextPath}/static/}'}" />
+        <property name="localAssetsPath" value="${r'${project.server.contextPath}}'}" />
+        <property name="contextPath" value="${r'${project.server.contextPath}}'}" />
     </bean>
 
     <bean id="dateFormatUtils" class="com.diligrp.website.util.format.DateFormatUtils" />

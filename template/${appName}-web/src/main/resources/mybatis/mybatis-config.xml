@@ -13,7 +13,7 @@
 		<setting name="defaultExecutorType" value="SIMPLE" />
 	</settings>
 	<typeAliases>
-		<typeAlias type="${basepackage}.base.BaseQuery" alias="Query" />
+		<typeAlias type="${basepackage}.domain.base.BaseQuery" alias="Query" />
 	</typeAliases>
 	<mappers />
 </configuration>

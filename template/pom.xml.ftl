@@ -203,6 +203,12 @@
         </dependency>
 
         <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-tools</artifactId>
             <version>2.0</version>
@@ -320,7 +326,7 @@
 
 
         <dependency>
-            <groupId>com.yqyw.website</groupId>
+            <groupId>com.diligrp.website</groupId>
             <artifactId>diligrp-website-util</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

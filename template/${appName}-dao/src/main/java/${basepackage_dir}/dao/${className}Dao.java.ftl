@@ -5,12 +5,9 @@
 package ${basepackage}.dao;
 
 
-import java.util.List;
 
-import org.springframework.stereotype.Component;
 
 import com.diligrp.website.util.dao.IBaseDao;
-import com.diligrp.website.util.dao.BaseQuery;
 
 import ${basepackage}.domain.${className};
 
