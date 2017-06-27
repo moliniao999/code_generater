@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
- * User: juqkai (juqkai@gmail.com)
+ * User: weili (weili@gmail.com)
  * Date: 13-9-25 上午11:23
  */
 public class WebContentFilter implements Filter {

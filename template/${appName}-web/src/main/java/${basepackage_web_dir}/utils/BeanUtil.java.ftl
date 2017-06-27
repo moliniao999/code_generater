@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 /**
  * Bean工具
- * User: juqkai (juqkai@gmail.com)
+ * User: weili (weili@gmail.com)
  * Date: 13-9-29 上午10:21
  */
 public class BeanUtil {

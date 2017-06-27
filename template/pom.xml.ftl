@@ -347,7 +347,7 @@
             <id>dev</id>
             <!-- 默认 -->
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <!-- 数据库连接池配置文件 -->

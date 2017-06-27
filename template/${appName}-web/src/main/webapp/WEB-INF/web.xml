@@ -16,7 +16,7 @@
     <!--过滤XSS,SQL漏洞-->
     <filter>
         <filter-name>XSSFilter</filter-name>
-        <filter-class>${basepackage}.web.fifter.XSSFilter</filter-class>
+        <filter-class>${basepackage}.web.utils.XSSFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>XSSFilter</filter-name>

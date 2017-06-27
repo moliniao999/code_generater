@@ -78,34 +78,34 @@ PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcesso
 
 
 
-
-
-
     <!--velocity   -->
-    <bean id="velocityConfig"
+    <!-- 视图解析器配置 -->
+    <bean id="velocityConfigurer"
           class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-
-        <property name="resourceLoaderPath"  value="/" />
-        <property name="velocityProperties"  >
+        <property name="resourceLoaderPath" value="/WEB-INF/views/" />
+        <property name="velocityProperties">
             <props>
-                <prop key="input.encoding" >UTF-8</prop>
-                <prop key="output.encoding" >UTF-8</prop>
+                <prop key="input.encoding">UTF-8</prop>
+                <prop key="output.encoding">UTF-8</prop>
+                <prop key="contentType">text/html;charset=UTF-8</prop>
+                <prop key="velocimacro.library">common/macro.vm</prop>
+                <prop key="file.resource.loader.cache">false</prop>
+                <prop key="file.resource.loader.modificationCheckInterval">1</prop>
+                <prop key="velocimacro.library.autoreload">true</prop>
+                <prop key="eventhandler.referenceinsertion.class">org.apache.velocity.app.event.implement.EscapeHtmlReference</prop>
+                <prop key="eventhandler.escape.html.match">/^(?:screen_content)|(?:noescape_.*)$/</prop>
             </props>
         </property>
-
     </bean>
-    <bean id="velocityViewResolver"
-          class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
-        <property name="cache" value="true" />
-        <property name="prefix" value="/WEB-INF/views/" />
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
         <property name="suffix" value=".vm" />
         <property name="contentType" value="text/html;charset=UTF-8" />
-        <!--<property name="layoutUrl" value="/WEB-INF/layouts/layout.vm" />-->
-        <property name="order"  value="1" />
+        <property name="order"  value="0" />
     </bean>
 
     <bean id="velocityDefaultLayout" class="java.lang.String">
-        <constructor-arg value="${r'${project_view_VMDefault}'}" />
+        <constructor-arg value="${r'${project.view.VMDefault}'}" />
     </bean>
 
     <!-- jsp   -->
@@ -115,11 +115,6 @@ PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcesso
         <property name="suffix" value=".jsp" />
         <property name="contentType" value="text/html;charset=UTF-8" />
         <property name="order"  value="2" />
-    </bean>
-    <!-- 文件上传使用 -->
-    <bean id="multipartResolver"
-          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize" value="209715200" /><!-- 200M -->
     </bean>
 
 

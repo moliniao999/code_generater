@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * MVC容器
- * User: juqkai (juqkai@gmail.com)
+ * User: weili (weili@gmail.com)
  * Date: 13-9-25 上午11:12
  */
 public class WebContent {

@@ -7,13 +7,13 @@
 	</comment>
 	
 	<!--<entry key="dal_package">com.juqkai.base.dal</entry>-->
-	<entry key="appName">user</entry>
+	<entry key="appName">shop</entry>
     <!-- 增删改查的基本package -->
-    <entry key="basepackage">com.weili.user</entry>
+    <entry key="basepackage">com.weili.shop</entry>
 	<entry key="basepackage_groupId">com.weili</entry>
 
 
-	<entry key="basepackage_web">com.weili.user.web</entry>
+	<entry key="basepackage_web">com.weili.shop.web</entry>
 
 	<!-- jsp namespace: web/${namespace}/${className}/list.jsp -->
 	<entry key="namespace">pages</entry>
@@ -44,7 +44,7 @@
 
 	<!-- dalgen的table配置文件目录,不需要一个个列举出来,只要是这个目录下面的xml文件就可以全部扫描出来  -->
 	<entry key="dir_table_configs">tables</entry>
-    <entry key="outRoot">e:/output/project-user</entry>
+    <entry key="outRoot">e:/output/project-shop</entry>
 
 	<!-- dal层模板的输出目录 -->
 	<entry key="dir_dal_output_root">target/generator-output/</entry>
@@ -137,5 +137,5 @@
 
 
 	<!--应用程序参数自定义 -->
-	<entry key="project_view_VMDefault">#{project.view.VMDefault}</entry>
+
 </properties>
