@@ -23,7 +23,7 @@
 
 		WHERE ${table.pkColumn.sqlName}=<#noparse>#{pk}
 		</#noparse>
-		and (yn is null or yn = 1)
+		and (delflag is null or delflag = 1)
 		]]>
 	</select>
 
@@ -39,7 +39,7 @@
 		    <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase
                 || column.columnNameLowerCase == "created"
                 || column.columnNameLowerCase == "modified"
-                || column.columnNameLowerCase == "yn"
+                || column.columnNameLowerCase == "delflag"
                 ><#else>
                     <#if cindex != 0>,</#if>${column.sqlName}
                     <#assign cindex = cindex + 1>
@@ -53,7 +53,7 @@
 		        <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase
                     || column.columnNameLowerCase == "created"
                     || column.columnNameLowerCase == "modified"
-                    || column.columnNameLowerCase == "yn"
+                    || column.columnNameLowerCase == "delflag"
                     ><#else>
                     <#if cindex != 0>,</#if><#noparse>#{</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
                     <#assign cindex = cindex + 1>
@@ -73,7 +73,7 @@
                     <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase
                     || column.columnNameLowerCase == "created"
                     || column.columnNameLowerCase == "modified"
-                    || column.columnNameLowerCase == "yn"
+                    || column.columnNameLowerCase == "delflag"
                     ><#else>
                         <#if cindex != 0>,</#if>${column.sqlName}=<#noparse>#{</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
                         <#assign cindex = cindex + 1>
@@ -92,9 +92,9 @@
 		]]>
         <if test="param != null">
             <#list table.columns as column>
-            <#if column.columnNameLowerCase == "yn">
+            <#if column.columnNameLowerCase == "delflag">
             <![CDATA[
-                    and (yn is null or yn = 1)
+                    and (delflag is null or delflag = 1)
                     ]]>
             <#else>
             <if test="param.${column.columnNameFirstLower} != null and param.${column.columnNameFirstLower} != ''">
@@ -115,9 +115,9 @@
 		]]>
         <if test="param != null">
         <#list table.columns as column>
-            <#if column.columnNameLowerCase == "yn">
+            <#if column.columnNameLowerCase == "delflag">
                 <![CDATA[
-                and (yn is null or yn = 1)
+                and (delflag is null or delflag = 1)
                 ]]>
             <#else>
                 <if test="param.${column.columnNameFirstLower} != null and param.${column.columnNameFirstLower} != ''">
@@ -139,7 +139,7 @@
     <![CDATA[
         update ${table.sqlName} set
         <#noparse>
-        yn = 2
+        delflag = 2
         where 1 = 1
         </#noparse>
         and ${table.pkColumn.sqlName} =<#noparse> #{id}</#noparse>
