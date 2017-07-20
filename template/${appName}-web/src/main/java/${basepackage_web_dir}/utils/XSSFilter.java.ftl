@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
  * <B>Company</B> 地利集团
  * 
  * @createTime Jun 25, 2014 11:13:14 AM
- * @author wujianjun
+ * @author weili
  */
 public class XSSFilter implements Filter {
 
