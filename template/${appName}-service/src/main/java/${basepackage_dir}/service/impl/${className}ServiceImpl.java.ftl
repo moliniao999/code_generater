@@ -60,8 +60,8 @@ public class ${className}ServiceImpl implements ${className}Service {
     }
 
     public PageTemplate find(BaseQuery bq) throws DiliException {
-    List<${className}> list = activityDao.listByCondition(bq);
-    int totalSize = activityDao.countByCondition(bq);
+    List<${className}> list = ${classNameLower}Dao.listByCondition(bq);
+    int totalSize = ${classNameLower}Dao.countByCondition(bq);
     return  PageTemplate.create(bq, totalSize, list);
     }
 

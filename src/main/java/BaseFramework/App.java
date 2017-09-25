@@ -29,7 +29,7 @@ public class App {
 //          g.generateByAllTable();	//自动搜索数据库中的所有表并生成文件,template为模板的根目录
 
 
-          g.generateByTable("t_activity");
+          g.generateByTable("allot_order_ref");
 //        g.generateByTable("article");
 
     }

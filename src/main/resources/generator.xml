@@ -44,7 +44,7 @@
 
 	<!-- dalgen的table配置文件目录,不需要一个个列举出来,只要是这个目录下面的xml文件就可以全部扫描出来  -->
 	<entry key="dir_table_configs">tables</entry>
-    <entry key="outRoot">e:/output/project-shop</entry>
+    <entry key="outRoot">D:/output/project-shop</entry>
 
 	<!-- dal层模板的输出目录 -->
 	<entry key="dir_dal_output_root">target/generator-output/</entry>
@@ -80,10 +80,10 @@
 	<!--<entry key="jdbc_url">jdbc:mysql://jkwin7:3306/zhangzhong?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
 	<!--<entry key="jdbc_url">jdbc:mysql://192.168.1.14:3306/dili-crm?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
 	<!--<entry key="jdbc_url">jdbc:mysql://192.168.1.14:3306/dili-website?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
-	<entry key="jdbc_url">jdbc:mysql://10.28.6.55:3307/agriez_activity?useUnicode=true&amp;characterEncoding=utf8</entry>
+	<entry key="jdbc_url">jdbc:mysql://10.40.10.210:3306/small_business_develop?useUnicode=true&amp;characterEncoding=utf8</entry>
 	<entry key="jdbc_driver">org.mariadb.jdbc.Driver</entry>
-	<entry key="jdbc_username">root</entry>
-	<entry key="jdbc_password">123456</entry>
+	<entry key="jdbc_username">lixin</entry>
+	<entry key="jdbc_password">Lixin_360</entry>
 	<!--<entry key="jdbc_driver">com.mysql.jdbc.Driver</entry> -->
 
 

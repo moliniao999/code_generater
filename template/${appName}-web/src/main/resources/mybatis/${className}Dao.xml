@@ -1,7 +1,7 @@
 <#include "/include/base.include"/>
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="${basepackage}.dao.impl.${className}DaoImpl">
+<mapper namespace="${basepackage}.dao.${className}Dao">
     <resultMap id="${className}RM" type="${basepackage}.domain.${className}">
         <#list table.columns as column>
         <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase>

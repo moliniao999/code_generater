@@ -199,13 +199,14 @@
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
-            <version>3.1</version>
+            <version>2.1_3</version>
         </dependency>
+
 
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib-nodep</artifactId>
-            <version>3.1</version>
+            <version>2.1_3</version>
         </dependency>
 
         <dependency>
@@ -352,9 +353,9 @@
             <properties>
                 <!-- 数据库连接池配置文件 -->
                 <project.dbpool.driverClass>com.mysql.jdbc.Driver</project.dbpool.driverClass>
-                <project.dbpool.jdbcUrl>jdbc:mysql://10.28.6.55:3307/agriez_activity?useUnicode=true&amp;characterEncoding=utf8</project.dbpool.jdbcUrl>
-                <project.dbpool.username>root</project.dbpool.username>
-                <project.dbpool.password>123456</project.dbpool.password>
+                <project.dbpool.jdbcUrl>${jdbc_url}</project.dbpool.jdbcUrl>
+                <project.dbpool.username>${jdbc_username}</project.dbpool.username>
+                <project.dbpool.password>${jdbc_password}</project.dbpool.password>
                 <project.dbpool.idleConnectionTestPeriodInMinutes>1</project.dbpool.idleConnectionTestPeriodInMinutes>
                 <project.dbpool.idleMaxAgeInMinutes>4</project.dbpool.idleMaxAgeInMinutes>
                 <project.dbpool.partitionCount>1</project.dbpool.partitionCount>
