@@ -44,7 +44,7 @@
 
 	<!-- dalgen的table配置文件目录,不需要一个个列举出来,只要是这个目录下面的xml文件就可以全部扫描出来  -->
 	<entry key="dir_table_configs">tables</entry>
-    <entry key="outRoot">D:/output/project-shop</entry>
+    <entry key="outRoot">E:/output/project-shop</entry>
 
 	<!-- dal层模板的输出目录 -->
 	<entry key="dir_dal_output_root">target/generator-output/</entry>
@@ -54,6 +54,16 @@
 	<entry key="dir_templates_root">classpath:template</entry>
 
 
+	<!-- 数据库相关配置 -->
+	<!-- Mysql -->
+	<!--<entry key="jdbc_url">jdbc:mysql://jkwin7:3306/zhangzhong?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
+	<!--<entry key="jdbc_url">jdbc:mysql://192.168.1.14:3306/dili-crm?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
+	<!--<entry key="jdbc_url">jdbc:mysql://192.168.1.14:3306/dili-website?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
+	<entry key="jdbc_url">jdbc:mysql://10.40.10.210:3306/small_business_develop?useUnicode=true&amp;characterEncoding=utf8</entry>
+	<entry key="jdbc_driver">org.mariadb.jdbc.Driver</entry>
+	<entry key="jdbc_username">lixin</entry>
+	<entry key="jdbc_password">Lixin_360</entry>
+	<!--<entry key="jdbc_driver">com.mysql.jdbc.Driver</entry> -->
 
 
 	<!-- 切换不同的数据库驱动，可以影响如分页语句的生成. 因为生成器会根据jdbc_driver自动生成一个databaseType=mysql,oracle,postgresql变量 -->
@@ -70,21 +80,7 @@
 	<entry key="dir_crud_out_root">e:/output/generator_output</entry>
 
 
-	<!-- 数据库相关配置 -->
-	<!--<entry key="jdbc_username">sa</entry>-->
-	<!--<entry key="jdbc_password"></entry>-->
 
-
-
-	<!-- Mysql -->
-	<!--<entry key="jdbc_url">jdbc:mysql://jkwin7:3306/zhangzhong?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
-	<!--<entry key="jdbc_url">jdbc:mysql://192.168.1.14:3306/dili-crm?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
-	<!--<entry key="jdbc_url">jdbc:mysql://192.168.1.14:3306/dili-website?useUnicode=true&amp;characterEncoding=UTF-8</entry>-->
-	<entry key="jdbc_url">jdbc:mysql://10.40.10.210:3306/small_business_develop?useUnicode=true&amp;characterEncoding=utf8</entry>
-	<entry key="jdbc_driver">org.mariadb.jdbc.Driver</entry>
-	<entry key="jdbc_username">lixin</entry>
-	<entry key="jdbc_password">Lixin_360</entry>
-	<!--<entry key="jdbc_driver">com.mysql.jdbc.Driver</entry> -->
 
 
 	<!-- oracle使用oci的连接方式需要设置PATH环境变量及ORACLE_HOME环境变量 -->

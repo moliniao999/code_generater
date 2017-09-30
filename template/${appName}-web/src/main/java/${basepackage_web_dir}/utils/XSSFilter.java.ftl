@@ -1,6 +1,6 @@
 package ${basepackage}.web.utils;
 
-import com.diligrp.website.util.security.Validator;
+import com.jUtils.security.Validator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

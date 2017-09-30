@@ -7,7 +7,7 @@ package ${basepackage}.dao;
 
 
 
-import com.diligrp.website.util.dao.IBaseDao;
+import com.jUtils.dao.IBaseDao;
 
 import ${basepackage}.domain.${className};
 

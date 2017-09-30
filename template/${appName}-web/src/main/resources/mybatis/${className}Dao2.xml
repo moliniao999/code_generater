@@ -108,7 +108,7 @@
         </select>
 
         <!--save data to databases-->
-        <insert id="save" parameterType="${groupId}.${artifactId}.domain.${className}" useGeneratedKeys="true" keyProperty="id">
+        <insert id="save" parameterType="${basepackage}.domain.${className}" useGeneratedKeys="true" keyProperty="id">
         <![CDATA[ INSERT INTO ${table.sqlName}( ]]>
         <include refid="table-field-insert" />
         <![CDATA[
@@ -130,13 +130,13 @@
                 ]]>
         </insert>
 
-        <update id="update" parameterType="${groupId}.${artifactId}.domain.${className}">
+        <update id="update" parameterType="${basepackage}.domain.${className}">
         <![CDATA[ UPDATE ${table.sqlName} set ]]>
         <include refid="set-field-normal" />
         <![CDATA[ where del_flag = 1 AND ${table.pkColumn.sqlName} =<#noparse> #{id}</#noparse> ]]>
         </update>
 
-        <update id="updateByCheck" parameterType="${groupId}.${artifactId}.domain.${className}">
+        <update id="updateByCheck" parameterType="${basepackage}.domain.${className}">
         <![CDATA[ UPDATE ${table.sqlName} set ]]>
         <include refid="set-field-normal-check" />
         <![CDATA[ where del_flag = 1 AND ${table.pkColumn.sqlName} =<#noparse> #{id}</#noparse> ]]>

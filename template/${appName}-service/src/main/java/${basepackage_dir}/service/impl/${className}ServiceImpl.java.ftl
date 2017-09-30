@@ -11,10 +11,10 @@ import ${basepackage}.dao.${className}Dao;
 import ${basepackage}.domain.${className};
 import ${basepackage}.service.${className}Service;
 import ${basepackage}.dao.${className}Dao;
-import com.diligrp.website.util.dao.BaseQuery;
-import com.diligrp.website.util.web.PageTemplate;
-import com.diligrp.website.util.domain.Result;
-import com.diligrp.website.util.web.BeanUtils;
+import com.jUtils.dao.BaseQuery;
+import com.jUtils.web.PageTemplate;
+import com.jUtils.domain.Result;
+import com.jUtils.web.BeanUtils;
 
 import java.sql.Timestamp;
 import java.util.*;

@@ -135,8 +135,8 @@ PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcesso
         <property name="contextPath" value="${r'${project.server.contextPath}}'}" />
     </bean>
 
-    <bean id="dateFormatUtils" class="com.diligrp.website.util.format.DateFormatUtils" />
-    <bean id="moneyUtils" class="com.diligrp.website.util.format.MoneyUtils" />
+    <bean id="dateFormatUtils" class="com.jUtils.format.DateFormatUtils" />
+    <bean id="moneyUtils" class="com.jUtils.format.MoneyUtils" />
 
 </beans>
 

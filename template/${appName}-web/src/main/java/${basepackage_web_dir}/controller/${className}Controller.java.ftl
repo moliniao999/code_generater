@@ -1,5 +1,5 @@
 <#include "/include/base.include"/>
-package ${basepackage}.web.controller;
+package ${basepackage}.web.api;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,11 +9,11 @@ import ${basepackage}.service.${className}Service;
 import ${basepackage}.web.utils.WebUtils;
 import ${basepackage}.exception.DiliException;
 
-import com.diligrp.website.util.web.BeanUtils;
-import com.diligrp.website.util.web.BaseController;
-import com.diligrp.website.util.dao.BaseQuery;
-import com.diligrp.website.util.web.PageTemplate;
-import com.diligrp.website.util.domain.Result;
+import com.jUtils.web.BeanUtils;
+import com.jUtils.web.BaseController;
+import com.jUtils.dao.BaseQuery;
+import com.jUtils.web.PageTemplate;
+import com.jUtils.domain.Result;
 
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;

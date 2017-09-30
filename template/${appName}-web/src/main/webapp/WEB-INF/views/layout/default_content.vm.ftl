@@ -17,8 +17,8 @@
                         #set($success = $success)
                         #set($msg = $msg)
                         #if(!$success && $success != false)
-                            #set($success = ${req.getParameter("success")})
-                            #set($msg =  ${req.getParameter("msg")})
+                            #set($success = ${r'${req.getParameter("success")}'} )
+                            #set($msg = ${r'${req.getParameter("msg")}'}  )
                         #end
 
 
@@ -27,14 +27,14 @@
                                 <button type="button" class="close" data-dismiss="alert">
                                     <i class="ace-icon fa fa-times"></i>
                                 </button>
-                                <p>${msg}</p>
+                                <p>${r'${msg}'}</p>
                             </div>
                         #elseif($success == false)
                             <div class="alert alert-danger">
                                 <button type="button" class="close" data-dismiss="alert">
                                     <i class="ace-icon fa fa-times"></i>
                                 </button>
-                                <p>${msg}</p>
+                                <p>${r'${msg}'}</p>
                             </div>
                         #end
                     </div>

@@ -2,7 +2,7 @@
 package ${basepackage}.domain;
 
 import java.io.Serializable;
-import com.diligrp.website.util.domain.BaseDomain;
+import com.jUtils.domain.BaseDomain;
 import java.util.*;
 import java.sql.Timestamp;
 
@@ -14,9 +14,9 @@ public class ${className} extends BaseDomain {
 <#--字段-->
 <#list table.columns as column>
     <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase
-    || column.columnNameLowerCase == "created"
-    || column.columnNameLowerCase == "modified"
-    || column.columnNameLowerCase == "yn"
+    || column.columnNameLowerCase == "createTime"
+    || column.columnNameLowerCase == "updateTime"
+    || column.columnNameLowerCase == "delflag"
     ><#else>
     /**
      * ${column.remarks}
@@ -27,9 +27,9 @@ public class ${className} extends BaseDomain {
 <#--set get方法-->
 <#list table.columns as column>
     <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase
-    || column.columnNameLowerCase == "created"
-    || column.columnNameLowerCase == "modified"
-    || column.columnNameLowerCase == "yn"
+    || column.columnNameLowerCase == "createTime"
+    || column.columnNameLowerCase == "updateTime"
+    || column.columnNameLowerCase == "delflag"
     ><#else>
 
     public void set${column.columnName} (${column.simpleJavaType} ${column.columnNameFirstLower}){

@@ -2,7 +2,7 @@
 package ${basepackage}.exception;
 
 import java.io.Serializable;
-import com.diligrp.website.util.domain.BaseDomain;
+import com.jUtils.domain.BaseDomain;
 import java.util.*;
 import java.sql.Timestamp;
 

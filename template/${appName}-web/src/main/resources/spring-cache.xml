@@ -17,7 +17,7 @@
     </bean>
 
 
-    <!--<bean id="redisUtils" class="com.diligrp.website.util.redis.impl.RedisUtilImpl">-->
+    <!--<bean id="redisUtils" class="com.jUtils.redis.impl.RedisUtilImpl">-->
     <!--<property name="shardedJedisPool" ref="shardedJedisPool" />-->
     <!--<property name="keyRule" value="dili_yqyw_redis_" />-->
     <!--</bean>-->

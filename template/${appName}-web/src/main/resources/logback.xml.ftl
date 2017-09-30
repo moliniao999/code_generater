@@ -9,13 +9,13 @@
 
     <appender name="FILEINFO"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${catalina.base}/logs/servlet-springmvc.log</file>
+        <file>${r'${catalina.base}'}/logs/servlet-springmvc.log</file>
         <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-        <!--<FileNamePattern>${catalina.base}/logs/%d{yyyy-MM-dd}/log_servlet-springmvc.log</FileNamePattern>-->
+        <!--<FileNamePattern>${r'${catalina.base}'}/logs/%d{yyyy-MM-dd}/log_servlet-springmvc.log</FileNamePattern>-->
         <!--</rollingPolicy>-->
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${catalina.base}/logs/%d{yyyy-MM-dd}/servlet-springmvc.%i.log.zip
+            <FileNamePattern>${r'${catalina.base}'}/logs/%d{yyyy-MM-dd}/servlet-springmvc.%i.log.zip
             </FileNamePattern>
             <MaxHistory>30</MaxHistory>
             <timeBasedFileNamingAndTriggeringPolicy

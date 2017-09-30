@@ -20,7 +20,7 @@
 
     <properties>
         <spring.version>4.2.8.RELEASE</spring.version>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -327,8 +327,8 @@
 
 
         <dependency>
-            <groupId>com.diligrp.website</groupId>
-            <artifactId>diligrp-website-util</artifactId>
+            <groupId>com.jUtils</groupId>
+            <artifactId>jUtils</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

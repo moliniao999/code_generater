@@ -2,8 +2,8 @@
 package ${basepackage}.manager.${classNameLower};
 
 import ${basepackage}.domain.${className};
-import com.diligrp.website.util.dao.BaseQuery;
-import com.diligrp.website.util.web.PageTemplate;
+import com.jUtils.dao.BaseQuery;
+import com.jUtils.web.PageTemplate;
 
 <#include "/include/author.include"/>
 

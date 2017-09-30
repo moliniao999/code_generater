@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.diligrp.website.util.dao.impl.BaseDaoImpl;
+import com.jUtils.dao.impl.BaseDaoImpl;
 import ${basepackage}.dao.${className}Dao;
 
 

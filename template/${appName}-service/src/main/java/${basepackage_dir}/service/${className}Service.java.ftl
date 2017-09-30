@@ -3,8 +3,8 @@ package ${basepackage}.service;
 
 import ${basepackage}.exception.DiliException;
 import ${basepackage}.domain.${className};
-import com.diligrp.website.util.web.PageTemplate;
-import com.diligrp.website.util.dao.BaseQuery;
+import com.jUtils.web.PageTemplate;
+import com.jUtils.dao.BaseQuery;
 
 import java.util.*;
 

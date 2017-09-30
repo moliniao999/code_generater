@@ -10,8 +10,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.diligrp.website.util.dao.IBaseDao;
-import com.diligrp.website.util.dao.BaseQuery;
+import com.jUtils.dao.IBaseDao;
+import com.jUtils.dao.BaseQuery;
 
 import ${basepackage}.domain.${className};
 

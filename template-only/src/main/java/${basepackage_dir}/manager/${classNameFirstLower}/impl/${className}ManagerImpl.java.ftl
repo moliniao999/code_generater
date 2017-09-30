@@ -11,8 +11,8 @@ import org.springframework.cache.annotation.Cacheable;
 import ${basepackage}.dao.${className}Dao;
 import ${basepackage}.domain.${className};
 import ${basepackage}.manager.${classNameLower}.${className}Manager;
-import com.diligrp.website.util.dao.BaseQuery;
-import com.diligrp.website.util.web.PageTemplate;
+import com.jUtils.dao.BaseQuery;
+import com.jUtils.web.PageTemplate;
 
 import java.util.*;
 
