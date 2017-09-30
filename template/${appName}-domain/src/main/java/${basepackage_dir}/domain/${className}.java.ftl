@@ -1,10 +1,8 @@
 <#include "/include/base.include"/>
 package ${basepackage}.domain;
 
-import java.io.Serializable;
 import com.jUtils.domain.BaseDomain;
 import java.util.*;
-import java.sql.Timestamp;
 
 
 <#include "/include/author.include"/>
@@ -14,8 +12,11 @@ public class ${className} extends BaseDomain {
 <#--字段-->
 <#list table.columns as column>
     <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase
+    || column.columnNameLowerCase == "create_time"
     || column.columnNameLowerCase == "createTime"
-    || column.columnNameLowerCase == "updateTime"
+    || column.columnNameFirstLower == "createTime"
+    || column.columnNameLowerCase == "update_time"
+    || column.columnNameFirstLower == "updateTime"
     || column.columnNameLowerCase == "delflag"
     ><#else>
     /**
@@ -27,8 +28,10 @@ public class ${className} extends BaseDomain {
 <#--set get方法-->
 <#list table.columns as column>
     <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase
-    || column.columnNameLowerCase == "createTime"
-    || column.columnNameLowerCase == "updateTime"
+    || column.columnNameLowerCase == "create_time"
+    || column.columnNameFirstLower == "createTime"
+    || column.columnNameLowerCase == "update_time"
+    || column.columnNameFirstLower == "updateTime"
     || column.columnNameLowerCase == "delflag"
     ><#else>
 

@@ -17,19 +17,19 @@
         <sql id="table-field-select">
         <#assign isFirst=true />
         <#list table.columns as column>
-        <#if isFirst==false>, </#if><#assign isFirst=false />`${column.sqlName}`
+        <#if isFirst==false>, </#if><#assign isFirst=false />${column.sqlName}
                 </#list>
-                </sql>
+        </sql>
 
         <!--insert field-->
         <sql id="table-field-insert">
         <#assign isFirst=true />
         <#list table.columns as column>
         <#if column.columnNameLowerCase != table.pkColumn.columnNameLowerCase>
-        <#if isFirst==false>, </#if><#assign isFirst=false />`${column.sqlName}`
+        <#if isFirst==false>, </#if><#assign isFirst=false />${column.sqlName}
                 </#if>
                 </#list>
-                </sql>
+        </sql>
 
         <!--where field normal-->
         <sql id="where-field-normal">
@@ -38,15 +38,15 @@
         <#if column.columnNameLowerCase != "delflag" && column.columnNameLowerCase != "createtime"
         && column.columnNameLowerCase != "updatetime">
         <if test="${column.columnNameFirstLower} != null and ${column.columnNameFirstLower} != ''">
-            and `${column.sqlName}` = <#noparse>#{</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
+            and ${column.sqlName} = <#noparse>#{</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
                 </if>
         <#elseif column.columnNameLowerCase == table.pkColumn.columnNameLowerCase>
         <if test="id != null and id != ''">
-        and `${column.sqlName}` = <#noparse>#{</#noparse>id<#noparse>}</#noparse>
+        and ${column.sqlName} = <#noparse>#{</#noparse>id<#noparse>}</#noparse>
                 </if>
                 </#if>
                 </#list>
-                </sql>
+        </sql>
 
         <!--update set field normal first check null or empty string-->
         <sql id="set-field-normal-check">
@@ -56,14 +56,14 @@
         <#elseif column.columnNameLowerCase == "delflag">
         <#elseif column.columnNameLowerCase == "createtime">
         <#elseif column.columnNameLowerCase == "updatetime">
-        <#if isFirst==false>, </#if><#assign isFirst=false />`${column.sqlName}` = now()
+        <#if isFirst==false>, </#if><#assign isFirst=false />${column.sqlName} = now()
         <#else>
         <if test="${column.columnNameFirstLower} != null and ${column.columnNameFirstLower} != ''">
-        <#if isFirst==false>, </#if><#assign isFirst=false />`${column.sqlName}` = <#noparse>#{</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
+        <#if isFirst==false>, </#if><#assign isFirst=false />${column.sqlName} = <#noparse>#{</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
                 </if>
                 </#if>
                 </#list>
-                </sql>
+        </sql>
 
         <!--update set field normal-->
         <sql id="set-field-normal">
@@ -73,12 +73,12 @@
         <#elseif column.columnNameLowerCase == "delflag">
         <#elseif column.columnNameLowerCase == "createtime">
         <#elseif column.columnNameLowerCase == "updatetime">
-        <#if isFirst==false>, </#if><#assign isFirst=false />`${column.sqlName}` = now()
+        <#if isFirst==false>, </#if><#assign isFirst=false />${column.sqlName} = now()
         <#else>
-        <#if isFirst==false>, </#if><#assign isFirst=false />`${column.sqlName}` = <#noparse>#{</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
+        <#if isFirst==false>, </#if><#assign isFirst=false />${column.sqlName} = <#noparse>#{</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
                 </#if>
                 </#list>
-                </sql>
+        </sql>
 
         <!-- where field full-->
         <sql id="where-field-full">
@@ -86,15 +86,15 @@
         <#list table.columns as column>
         <#if column.columnNameLowerCase == table.pkColumn.columnNameLowerCase>
         <if test="id != null and id != ''">
-            and `${column.sqlName}` = <#noparse>#{</#noparse>id<#noparse>}</#noparse>
+            and ${column.sqlName} = <#noparse>#{</#noparse>id<#noparse>}</#noparse>
                 </if>
         <#else>
         <if test="${column.columnNameFirstLower} != null and ${column.columnNameFirstLower} != ''">
-        and `${column.sqlName}` = <#noparse>#{</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
+        and ${column.sqlName} = <#noparse>#{</#noparse>${column.columnNameFirstLower}<#noparse>}</#noparse>
                 </if>
                 </#if>
                 </#list>
-                </sql>
+        </sql>
 
         <!--Get data by primary key-->
         <select id="getById" parameterType="Long" resultMap="${className}RM">
@@ -163,7 +163,7 @@
                 limit #{K_START_ROW},#{K_DATA_SIZE}
                 ]]>
         </#noparse>
-                </select>
+        </select>
 
         <select id="listFullByMapCondition" parameterType="map" resultMap="${className}RM">
         <![CDATA[ SELECT ]]>
